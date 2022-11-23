@@ -9,7 +9,7 @@ using Unity.EditorCoroutines.Editor;
 
 public class BugReporterEditor : EditorWindow {
 	// Properties
-	private string m_bugReportValue;
+	private string m_bugReportValue = "";
 	private const int m_maxCharCount = 120;
 
 	private string m_versionNumber;
@@ -36,6 +36,10 @@ public class BugReporterEditor : EditorWindow {
 
 	// Unity Callbacks
 	private void OnGUI() {
+		if (BugReporterController.Instance == null) {
+			Debug.LogError("Hrm no controller");
+		}
+
 		if (s_window == null) {
 			return;
 		}
