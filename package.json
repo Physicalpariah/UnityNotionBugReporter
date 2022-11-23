@@ -1,7 +1,7 @@
 {
     "name": "com.anchorite.bugreporter",
     "version": "1.0.0",
-    "displayName": "Bug Reporter",
+    "displayName": "Anchorite Bug Reporter",
     "description": "A bug reporter for Notion",
     "unity": "2021.3",
     "unityRelease": "0b5",
