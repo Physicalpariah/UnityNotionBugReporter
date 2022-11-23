@@ -15,7 +15,6 @@ public class ErrorLogGatherer {
 	public void Initialise() {
 		m_logs = new List<string>();
 		Application.logMessageReceived += GatherErrorLog;
-		Debug.Log("Init for gatherer");
 	}
 
 	// Unity Callbacks
