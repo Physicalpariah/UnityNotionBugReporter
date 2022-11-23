@@ -54,7 +54,7 @@ public class BugReporterView : MonoBehaviour {
 			c_reportRoutine = null;
 		}
 
-		c_reportRoutine = StartCoroutine(BugReporterController.Instance.DoreportSend(m_playerReportData, m_testPlayerData, m_testGameData, "charge"));
+		c_reportRoutine = StartCoroutine(BugReporterController.Instance.DoreportSend(m_playerReportData, m_testPlayerData, m_testGameData));
 	}
 
 	// Private Functions

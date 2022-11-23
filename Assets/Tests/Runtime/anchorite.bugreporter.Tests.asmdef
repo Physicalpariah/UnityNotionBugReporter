@@ -4,7 +4,7 @@
     "references": [
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner",
-        "anchorite.charge.bugreporter"
+        "anchorite.bugreporter"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

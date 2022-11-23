@@ -30,7 +30,7 @@ public class BugReporterControllerTests {
 
 	[Test]
 	public void CreatesValidJson() {
-		string json = BugReporterController.Instance.BuildJSON("report", "playerData", "gameData", "gameTitle");
+		string json = BugReporterController.Instance.BuildJSON("report", "playerData", "gameData");
 
 		try {
 			Root obj = UnityEngine.JsonUtility.FromJson<Root>(json);
@@ -44,29 +44,12 @@ public class BugReporterControllerTests {
 
 	[UnityTest]
 	public IEnumerator SendsReport() {
-		yield return BugReporterController.Instance.DoreportSend("bug report test", "test data", "game data", "test");
+		yield return BugReporterController.Instance.DoreportSend("bug report test", "test data", "game data");
 
 		if (BugReporterController.Instance.m_lastRequest.result != UnityEngine.Networking.UnityWebRequest.Result.Success) {
 			Assert.Fail();
 		}
 
-		Assert.Pass();
-	}
-
-
-	[Test]
-	public void SetsVersion() {
-
-		string version = "version";
-		string build = "build";
-		BugReporterController.Instance.SetVersion(version, build);
-
-		if (BugReporterController.Instance.m_buildNumber != build) {
-			Assert.Fail();
-		}
-		if (BugReporterController.Instance.m_versionNumber != version) {
-			Assert.Fail();
-		}
 		Assert.Pass();
 	}
 }

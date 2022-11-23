@@ -1,0 +1,21 @@
+{
+    "name": "com.anchorite.bugReporter",
+    "version": "1.0.0",
+    "displayName": "Bug Reporter",
+    "description": "A bug reporter for Notion",
+    "unity": "2021.3.13f1",
+    "unityRelease": "0b5",
+    "documentationUrl": "https://anchoritegames.com",
+    "changelogUrl": "https://anchoritegames.com",
+    "licensesUrl": "https://anchoritegames.com",
+    "dependencies": {
+    },
+    "keywords": [
+        "bug report"
+    ],
+    "author": {
+        "name": "Anchorite",
+        "email": "purchasm@gmail.com",
+        "url": "https://anchoritegames.com"
+    }
+}

@@ -74,7 +74,7 @@ public class BugReporterEditor : EditorWindow {
 	}
 
 	private IEnumerator DoRunReport() {
-		yield return BugReporterController.Instance.DoreportSend(m_bugReportValue, "data", "gamedata", "charge");
+		yield return BugReporterController.Instance.DoreportSend(m_bugReportValue, "data", "gamedata");
 		m_bugReportValue = "";
 		BugReporterController.Instance.m_errorLogGatherer.ClearLogs();
 	}

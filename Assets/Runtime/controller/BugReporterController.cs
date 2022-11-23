@@ -8,14 +8,16 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Networking;
 
+#if UNITY_IPHONE
+using UnityEditor.iOS.Xcode;
+#endif
+
 [Serializable]
 public class BugReporterController {
 	// Properties
 	public ErrorLogGatherer m_errorLogGatherer;
 	private const int m_maxTextLength = 999;
 	private const int m_maxBlockCount = 99;
-	public string m_versionNumber { get; private set; }
-	public string m_buildNumber { get; private set; }
 	public UnityWebRequest m_lastRequest { get; private set; }
 
 	public BugReportConfigObject m_config;
@@ -52,13 +54,9 @@ public class BugReporterController {
 
 	}
 
-	// Public Functions
-	public void SetVersion(string version, string build) {
-		m_versionNumber = version;
-		m_buildNumber = build;
-	}
+	// Public Function
 
-	public string BuildJSON(string reportData, string playerData, string gameData, string gameTitle) {
+	public string BuildJSON(string reportData, string playerData, string gameData) {
 		var parent = new parent(m_config.m_destination);
 		string logs = m_errorLogGatherer.GetLogs();
 
@@ -67,9 +65,9 @@ public class BugReporterController {
 		Name report = CreateName(reportData);
 
 		SelectProp os = CreateSelect(SystemInfo.operatingSystem.ToString());
-		SelectProp app = CreateSelect(m_versionNumber + "-" + m_buildNumber);
+		SelectProp app = CreateSelect(Application.version + "-" + m_config.m_currentBuild);
 		SelectProp device = CreateSelect(Application.platform.ToString());
-		SelectProp gameType = CreateSelect(gameTitle);
+		SelectProp gameType = CreateSelect(m_config.m_gameTitle);
 		SelectProp priority = CreateSelect(reportPriority.ToString());
 
 		Block game = CreateBlock(SanitiseEmbeddedJson(gameData), "Game Data");
@@ -93,10 +91,10 @@ public class BugReporterController {
 		return json.Replace("_object", "object");
 	}
 
-	public IEnumerator DoreportSend(string playerReport, string playerData, string gameData, string gameTitle) {
+	public IEnumerator DoreportSend(string playerReport, string playerData, string gameData) {
 		var url = $"https://api.notion.com/v1/pages";
 
-		string json = BuildJSON(playerReport, playerData, gameData, gameTitle);
+		string json = BuildJSON(playerReport, playerData, gameData);
 
 		UnityWebRequest www = new UnityWebRequest(url, "POST");
 
