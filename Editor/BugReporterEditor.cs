@@ -28,7 +28,7 @@ public class BugReporterEditor : EditorWindow {
 	}
 
 	// Initalisation Functions
-	[MenuItem("Window/Anchorite/Editor Bug Reporter")]
+	[MenuItem("Anchorite/utils/Editor Bug Reporter")]
 	static void Init() {
 		BugReporterController ctrl = BugReporterController.Instance;
 		_window = (BugReporterEditor)EditorWindow.GetWindow(typeof(BugReporterEditor));
