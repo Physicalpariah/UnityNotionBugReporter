@@ -8,9 +8,9 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Networking;
 
-#if UNITY_IPHONE
-using UnityEditor.iOS.Xcode;
-#endif
+// #if UNITY_IPHONE
+// using UnityEditor.iOS.Xcode;
+// #endif
 
 [Serializable]
 public class BugReporterController {
