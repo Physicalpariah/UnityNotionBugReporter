@@ -21,7 +21,7 @@ public class BugReporterController {
 	public UnityWebRequest m_lastRequest { get; private set; }
 
 	public BugReportConfigObject m_config;
-	private string m_configPath = "data/bugReporter/bugReportConfig";
+	private string m_configPath = "data/info/bugReportConfig";
 
 	private static BugReporterController m_instance;
 	public static BugReporterController Instance {
